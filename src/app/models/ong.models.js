@@ -10,7 +10,7 @@ async function createOng(data) {
   descricao
 ) values(
 $1, $2, $3, $4, $5, $6
-) `;
+) returning *  `;
 
   const values = [
     data.nomeOng,
@@ -20,8 +20,6 @@ $1, $2, $3, $4, $5, $6
     "teste",
     data.description,
   ];
-
-  // console.log(data);
 
   return db.query(query, values);
 }

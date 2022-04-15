@@ -1,11 +1,15 @@
 import ongModels from "../models/ong.models.js";
 
 async function createOng(req, res) {
-  const ong = req.body;
+  try {
+    const ong = req.body;
 
-  const result = await ongModels.createOng(ong);
+    const result = await ongModels.createOng(ong);
 
-  //   console.log(result.rows[0]);
+    res.send(result.rows[0]);
+  } catch (err) {
+    res.send(err);
+  }
 }
 
 export default {
