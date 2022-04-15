@@ -1,5 +1,7 @@
 import express from "express";
 
+import ongController from "../app/controller/ong.controller.js";
+
 export const router = express.Router();
 
-router.get("/", (req, res) => res.send("foi"));
+router.post("/createOng", ongController.createOng);
