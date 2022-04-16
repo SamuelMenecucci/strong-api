@@ -8,7 +8,7 @@ async function createOng(req, res) {
 
     res.send(result.rows[0]);
   } catch (err) {
-    res.send(err);
+    throw new Error(err);
   }
 }
 
