@@ -16,7 +16,9 @@ async function editOng(req, res) {
   try {
     const editOng = req.body.data;
 
-    console.log(editOng);
+    const result = await ongModels.editOng(editOng);
+
+    res.send(result.rows[0]);
   } catch (err) {
     throw new Error(err);
   }
