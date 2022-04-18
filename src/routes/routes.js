@@ -5,3 +5,4 @@ import ongController from "../app/controller/ong.controller.js";
 export const router = express.Router();
 
 router.post("/createOng", ongController.createOng);
+router.put("/editOng", ongController.editOng);
