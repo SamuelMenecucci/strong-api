@@ -36,9 +36,9 @@ function editOng(data) {
     tel=$5,
     imagem=$6,
     descricao=$7
-  
     where id = $8
-  `;
+    
+    returning *`;
 
   const values = [
     data.nome,
