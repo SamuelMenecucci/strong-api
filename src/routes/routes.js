@@ -6,4 +6,4 @@ import multer from "../middlewares/multer.js";
 export const router = express.Router();
 
 router.post("/createOng", ongController.createOng);
-router.put("/editOng", multer.single("file"), ongController.editOng);
+router.put("/editOng", multer.array("file", 1), ongController.editOng);
