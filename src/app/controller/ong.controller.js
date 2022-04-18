@@ -12,6 +12,17 @@ async function createOng(req, res) {
   }
 }
 
+async function editOng(req, res) {
+  try {
+    const editOng = req.body.data;
+
+    console.log(editOng);
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+
 export default {
   createOng,
+  editOng,
 };
