@@ -14,7 +14,7 @@ async function createOng(req, res) {
 
 async function editOng(req, res) {
   try {
-    const editOng = req.body.data;
+    const editOng = req.body;
 
     const result = await ongModels.editOng(editOng);
 
