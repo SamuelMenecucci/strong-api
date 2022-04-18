@@ -19,7 +19,7 @@ $1, $2, $3, $4, $5, $6, $7
     data.senha,
     data.cnpj,
     data.tel,
-    "teste",
+    "",
     data.description,
   ];
 
@@ -46,7 +46,7 @@ function editOng(data) {
     data.senha,
     data.cnpj,
     data.tel,
-    "teste",
+    data.imagem,
     data.descricao,
     data.id,
   ];
@@ -54,7 +54,12 @@ function editOng(data) {
   return db.query(query, values);
 }
 
+function oldPicture(id) {
+  return db.query("select imagem from ong where id = $1", [id]);
+}
+
 export default {
   createOng,
   editOng,
+  oldPicture,
 };
