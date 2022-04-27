@@ -6,6 +6,13 @@ async function getVacancies(req, res) {
   return res.send(result.rows);
 }
 
+async function createVacancy(req, res) {
+  const result = await vacancyModel.newVacancy(req.body.vaga);
+
+  return res.send(result.rows[0]);
+}
+
 export default {
   getVacancies,
+  createVacancy,
 };

@@ -10,3 +10,4 @@ router.post("/createOng", ongController.createOng);
 router.put("/editOng", multer.array("file", 1), ongController.editOng);
 
 router.get("/getVacancies", vacancyController.getVacancies);
+router.post("/newVacancy", vacancyController.createVacancy);
