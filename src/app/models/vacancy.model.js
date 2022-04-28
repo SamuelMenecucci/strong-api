@@ -24,7 +24,9 @@ function newVacancy(data) {
 }
 
 function searchVacancy(filter) {
-  return db.query(`select * from vagas where titulo ilike '%${filter}%' `);
+  return db.query(
+    `select * from vagas where (titulo ilike '%${filter}%') or (tag ilike '%${filter}%') `
+  );
 }
 
 export default {
