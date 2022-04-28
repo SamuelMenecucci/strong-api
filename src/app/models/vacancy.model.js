@@ -29,9 +29,17 @@ function searchVacancy(filter) {
   );
 }
 
+function editVacancy(data) {
+  return db.query(
+    `update vagas set titulo = $1, descricao = $2, tag = $3 where ongid = $4`,
+    [data.titulo, data.descricao, data.tags.toString(), data.loggedOng]
+  );
+}
+
 export default {
   getVacancies,
   newVacancy,
   searchVacancy,
   getOngVacancies,
+  editVacancy,
 };
