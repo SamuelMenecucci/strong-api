@@ -26,9 +26,23 @@ async function searchVacancy(req, res) {
   res.send(result.rows);
 }
 
+async function editVacancy(req, res) {
+  let { titulo, descricao, tags, loggedOng } = req.body;
+
+  const result = await vacancyModel.editVacancy({
+    titulo,
+    descricao,
+    tags,
+    loggedOng,
+  });
+
+  res.send(result.rows);
+}
+
 export default {
   getVacancies,
   createVacancy,
   searchVacancy,
   getOngVacancies,
+  editVacancy,
 };
