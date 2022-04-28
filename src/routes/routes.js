@@ -17,3 +17,5 @@ router.get("/searchVacancy", vacancyController.searchVacancy);
 router.get("/ongVacancies/:id", vacancyController.getOngVacancies);
 
 router.put("/editVacancy", vacancyController.editVacancy);
+
+router.delete("/deleteVacancy/:id", vacancyController.deleteVacancy);

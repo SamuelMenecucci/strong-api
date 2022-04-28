@@ -36,10 +36,15 @@ function editVacancy(data) {
   );
 }
 
+async function deleteVacancy(id) {
+  return db.query("delete from vagas where id = $1", [id]);
+}
+
 export default {
   getVacancies,
   newVacancy,
   searchVacancy,
   getOngVacancies,
   editVacancy,
+  deleteVacancy,
 };
