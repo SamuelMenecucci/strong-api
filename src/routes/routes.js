@@ -13,3 +13,5 @@ router.get("/getVacancies", vacancyController.getVacancies);
 router.post("/newVacancy", vacancyController.createVacancy);
 
 router.get("/searchVacancy", vacancyController.searchVacancy);
+
+router.get("/ongVacancies/:id", vacancyController.getOngVacancies);
