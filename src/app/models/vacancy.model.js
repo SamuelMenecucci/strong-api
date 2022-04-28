@@ -13,12 +13,15 @@ function newVacancy(data) {
 
   const values = [data.titulo, data.descricao, data.tag.toString(), data.ongId];
 
-  console.log(data.tag.toString());
-
   return db.query(query, values);
+}
+
+function searchVacancy(filter) {
+  return db.query(`select * from vagas where titulo ilike '%${filter}%' `);
 }
 
 export default {
   getVacancies,
   newVacancy,
+  searchVacancy,
 };
