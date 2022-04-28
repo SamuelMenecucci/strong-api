@@ -6,6 +6,14 @@ async function getVacancies(req, res) {
   return res.send(result.rows);
 }
 
+async function getOngVacancies(req, res) {
+  const { id } = req.params;
+
+  const result = await vacancyModel.getOngVacancies(id);
+
+  res.send(result.rows);
+}
+
 async function createVacancy(req, res) {
   const result = await vacancyModel.newVacancy(req.body.vaga);
 
@@ -22,4 +30,5 @@ export default {
   getVacancies,
   createVacancy,
   searchVacancy,
+  getOngVacancies,
 };
