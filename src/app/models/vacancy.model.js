@@ -2,13 +2,13 @@ import { db } from "../../config/db.config.js";
 
 function getVacancies() {
   return db.query(
-    "select *, vagas.descricao as descricaovaga from vagas left join ong on ( vagas.ongId = ong.id)"
+    "select *, vagas.descricao as descricaovaga, vagas.id as vagaId from vagas left join ong on ( vagas.ongId = ong.id)"
   );
 }
 
 function getOngVacancies(ongId) {
   return db.query(
-    "select *, vagas.descricao as descricaovaga from vagas left join ong on ( vagas.ongId = ong.id) where ongid = $1 ",
+    "select *, vagas.descricao as descricaovaga, vagas.id as vagaId from vagas left join ong on ( vagas.ongId = ong.id) where ongid = $1 ",
     [ongId]
   );
 }
@@ -31,8 +31,8 @@ function searchVacancy(filter) {
 
 function editVacancy(data) {
   return db.query(
-    `update vagas set titulo = $1, descricao = $2, tag = $3 where ongid = $4`,
-    [data.titulo, data.descricao, data.tags.toString(), data.loggedOng]
+    `update vagas set titulo = $1, descricao = $2, tag = $3 where id = $4`,
+    [data.titulo, data.descricao, data.tags.toString(), data.id]
   );
 }
 

@@ -27,13 +27,13 @@ async function searchVacancy(req, res) {
 }
 
 async function editVacancy(req, res) {
-  let { titulo, descricao, tags, loggedOng } = req.body;
+  let { titulo, descricao, tags, id } = req.body;
 
   const result = await vacancyModel.editVacancy({
     titulo,
     descricao,
     tags,
-    loggedOng,
+    id,
   });
 
   res.send(result.rows);
