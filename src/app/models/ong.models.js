@@ -5,7 +5,7 @@ async function checkUserExists(data) {
   select * from ong where (nome = $1) or (cnpj = $2) or (email = $3) 
   `;
 
-  const values = [data.nomeOng, data.cnpj, data.email];
+  const values = [data.nomeOng.trim(), data.cnpj, data.email];
 
   const results = await db.query(query, values);
 
