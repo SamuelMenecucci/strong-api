@@ -1,7 +1,7 @@
 import ongModels from "../models/ong.models.js";
 import fs from "fs";
 
-async function createOng(req, res) {
+async function createOng(req, res, next) {
   try {
     const ong = req.body;
 
@@ -9,7 +9,7 @@ async function createOng(req, res) {
 
     res.send(result.rows[0]);
   } catch (err) {
-    throw new Error(err);
+    next(err);
   }
 }
 
