@@ -1,5 +1,17 @@
 import { db } from "../../config/db.config.js";
 
+async function checkUserExists(data) {
+  const query = `
+  select * from ong where (nome = $1) or (cnpj = $2) or (email = $3) 
+  `;
+
+  const values = [data.nomeOng, data.cnpj, data.email];
+
+  const results = await db.query(query, values);
+
+  return results.rows[0];
+}
+
 async function createOng(data) {
   const query = `insert into ong(
   nome, 
@@ -59,6 +71,7 @@ function oldPicture(id) {
 }
 
 export default {
+  checkUserExists,
   createOng,
   editOng,
   oldPicture,
