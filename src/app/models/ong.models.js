@@ -1,4 +1,7 @@
 import { db } from "../../config/db.config.js";
+import bcrypt from "bcrypt";
+
+const { hash } = bcrypt;
 
 async function checkUserExists(data) {
   const query = `
@@ -13,6 +16,7 @@ async function checkUserExists(data) {
 }
 
 async function createOng(data) {
+  const passwordHash = await hash(data.senha, 8);
   const query = `insert into ong(
   nome, 
   email,
@@ -28,7 +32,7 @@ $1, $2, $3, $4, $5, $6, $7
   const values = [
     data.nomeOng,
     data.email,
-    data.senha,
+    passwordHash,
     data.cnpj,
     data.tel,
     "",
