@@ -10,6 +10,14 @@ async function validOng(req, res, next) {
       }
     }
 
+    if (req.body.cnpj.replace(/\D/g, "").length < 14) {
+      throw new Error("CNPJ Inválido");
+    }
+
+    if (req.body.tel.replace(/\D/g, "").length < 11) {
+      throw new Error("Telefone Inválido");
+    }
+
     const ong = await ongModels.checkUserExists(req.body);
 
     if (ong) throw new Error("Usuário já cadastrado!");
