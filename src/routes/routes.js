@@ -1,4 +1,5 @@
 import express from "express";
+import feedbackController from "../app/controller/feedback.controller.js";
 
 import ongController from "../app/controller/ong.controller.js";
 import vacancyController from "../app/controller/vacancy.controller.js";
@@ -24,3 +25,5 @@ router.delete("/deleteVacancy/:id", vacancyController.deleteVacancy);
 router.use((err, req, res, next) => {
   res.status(400).send(err.message);
 });
+
+router.post("/newFeedback", feedbackController.createFeedback);
