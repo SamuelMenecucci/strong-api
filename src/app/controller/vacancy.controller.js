@@ -40,9 +40,13 @@ async function editVacancy(req, res) {
 }
 
 async function deleteVacancy(req, res) {
-  const result = await vacancyModel.deleteVacancy(req.params.id);
+  try {
+    const result = await vacancyModel.deleteVacancy(req.params.id);
 
-  res.send(result.rows[0]);
+    res.send(result.rows[0]);
+  } catch (err) {
+    next(err);
+  }
 }
 
 export default {
