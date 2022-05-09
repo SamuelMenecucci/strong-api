@@ -26,4 +26,5 @@ router.use((err, req, res, next) => {
   res.status(400).send(err.message);
 });
 
+router.get("/getFeedbacks", feedbackController.getFeedbacks);
 router.post("/newFeedback", feedbackController.createFeedback);
