@@ -1,6 +1,17 @@
 import ongModels from "../models/ong.models.js";
 import fs from "fs";
 
+async function login(req, res, next) {
+  try {
+    const { username, password } = req.body;
+    const result = await ongModels.login({ username, password });
+
+    res.send(result);
+  } catch (err) {
+    next(err);
+  }
+}
+
 async function createOng(req, res, next) {
   try {
     const ong = req.body;
@@ -48,4 +59,5 @@ async function editOng(req, res) {
 export default {
   createOng,
   editOng,
+  login,
 };
