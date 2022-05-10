@@ -3,6 +3,22 @@ import bcrypt from "bcrypt";
 
 const { hash } = bcrypt;
 
+async function login(user) {
+  const { username, password } = user;
+
+  const result = await db.query(`select * from ong where email= $1`, [
+    username,
+  ]);
+
+  if (result.rows.length === 0) throw new Error("Usuário não encontrado");
+
+  const passed = await bcrypt.compare(password, result.rows[0].senha);
+
+  if (!passed) throw new Error("Usuário e/ou senha incorretos");
+
+  return result.rows[0];
+}
+
 async function checkUserExists(data) {
   const query = `
   select * from ong where (nome = $1) or (cnpj = $2) or (email = $3) 
@@ -79,4 +95,5 @@ export default {
   createOng,
   editOng,
   oldPicture,
+  login,
 };
