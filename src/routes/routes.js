@@ -8,6 +8,7 @@ import ongValidator from "../validators/ong.validator.js";
 
 export const router = express.Router();
 
+router.post("/login", ongController.login);
 router.post("/createOng", ongValidator.validOng, ongController.createOng);
 router.put("/editOng", multer.array("file", 1), ongController.editOng);
 
