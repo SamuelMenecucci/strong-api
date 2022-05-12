@@ -3,20 +3,23 @@ import bcrypt from "bcrypt";
 
 const { hash } = bcrypt;
 
-async function login(user) {
-  const { username, password } = user;
+//buscar por um usuário no banco, para ver se ele existe ou não
+async function findOne(filters) {
+  let query = "select * from ong";
 
-  const result = await db.query(`select * from ong where email= $1`, [
-    username,
-  ]);
+  Object.keys(filters).map((key) => {
+    query = `${query}
+    ${key}
+    `;
 
-  if (result.rows.length === 0) throw new Error("Usuário não encontrado");
+    Object.keys(filters[key]).map((field) => {
+      query = `${query} ${field} = '${filters[key][field]}'`;
+    });
+  });
 
-  const passed = await bcrypt.compare(password, result.rows[0].senha);
+  const results = await db.query(query);
 
-  if (!passed) throw new Error("Usuário e/ou senha incorretos");
-
-  return result.rows[0];
+  return results.rows[0];
 }
 
 async function checkUserExists(data) {
@@ -95,5 +98,5 @@ export default {
   createOng,
   editOng,
   oldPicture,
-  login,
+  findOne,
 };
