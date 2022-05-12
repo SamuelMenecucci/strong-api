@@ -13,10 +13,6 @@ export const router = express.Router();
 
 router.use("/ongs", ongs.router);
 
-router.post("/login", sessionValidator.login, sessionController.login);
-router.post("/createOng", ongValidator.validOng, ongController.createOng);
-router.put("/editOng", multer.array("file", 1), ongController.editOng);
-
 router.get("/getVacancies", vacancyController.getVacancies);
 router.post("/newVacancy", vacancyController.createVacancy);
 
