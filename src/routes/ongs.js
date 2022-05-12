@@ -10,6 +10,11 @@ router.post("/login", sessionValidator.login, sessionController.login);
 
 router.post("/createOng", ongValidator.validOng, ongController.createOng);
 
-router.put("/editOng", multer.array("file", 1), ongController.editOng);
+router.put(
+  "/editOng",
+  multer.array("file", 1),
+  ongValidator.editOng,
+  ongController.editOng
+);
 
 export default { router };
