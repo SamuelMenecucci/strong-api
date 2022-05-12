@@ -11,8 +11,6 @@ async function login(req, res, next) {
 
     const passed = await bcrypt.compare(password, ong.senha);
 
-    console.log(passed);
-
     if (!passed) throw new Error("Senha incorreta!");
 
     req.ong = ong;

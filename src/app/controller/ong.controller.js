@@ -3,9 +3,11 @@ import fs from "fs";
 
 async function createOng(req, res, next) {
   try {
-    const ong = req.body;
+    const { ong } = req;
 
     const result = await ongModels.createOng(ong);
+
+    req.session.ongId = result.rows[0].id;
 
     res.send(result.rows[0]);
   } catch (err) {
