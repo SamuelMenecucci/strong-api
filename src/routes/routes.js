@@ -1,14 +1,19 @@
 import express from "express";
 import feedbackController from "../app/controller/feedback.controller.js";
+import ongs from "./ongs.js";
 
 import ongController from "../app/controller/ong.controller.js";
 import vacancyController from "../app/controller/vacancy.controller.js";
 import multer from "../middlewares/multer.js";
 import ongValidator from "../validators/ong.validator.js";
+import sessionValidator from "../validators/session.validator.js";
+import sessionController from "../app/controller/session.controller.js";
 
 export const router = express.Router();
 
-router.post("/login", ongController.login);
+router.use("/ongs", ongs.router);
+
+router.post("/login", sessionValidator.login, sessionController.login);
 router.post("/createOng", ongValidator.validOng, ongController.createOng);
 router.put("/editOng", multer.array("file", 1), ongController.editOng);
 
