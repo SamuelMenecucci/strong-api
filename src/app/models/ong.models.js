@@ -66,19 +66,17 @@ function editOng(data) {
   update ong set 
     nome=$1, 
     email=$2,
-    senha=$3,
-    cnpj=$4,
-    tel=$5,
-    imagem=$6,
-    descricao=$7
-    where id = $8
+    cnpj=$3,
+    tel=$4,
+    imagem=$5,
+    descricao=$6
+    where id = $7
     
     returning *`;
 
   const values = [
     data.nome,
     data.email,
-    data.senha,
     data.cnpj,
     data.tel,
     data.imagem,
