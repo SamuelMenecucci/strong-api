@@ -10,6 +10,8 @@ router.get("/getOng", ongValidator.getUser, ongController.getOng);
 
 router.post("/login", sessionValidator.login, sessionController.login);
 
+router.get("/logout", sessionController.logout);
+
 router.post("/createOng", ongValidator.validOng, ongController.createOng);
 
 router.put(

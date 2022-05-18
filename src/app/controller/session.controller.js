@@ -4,4 +4,10 @@ function login(req, res) {
   res.send(req.ong);
 }
 
-export default { login };
+function logout(req, res) {
+  req.session.destroy();
+
+  res.send("Ok");
+}
+
+export default { login, logout };
