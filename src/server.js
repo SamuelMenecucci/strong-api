@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { router } from "./routes/routes.js";
-import { session } from "./config/session.config.js";
+import session from "./config/session.config.js";
 
 const app = express();
 

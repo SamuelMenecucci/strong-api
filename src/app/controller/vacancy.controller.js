@@ -6,12 +6,16 @@ async function getVacancies(req, res) {
   return res.send(result.rows);
 }
 
-async function getOngVacancies(req, res) {
-  const { id } = req.params;
+async function getOngVacancies(req, res, next) {
+  try {
+    const { ongId } = req.session;
 
-  const result = await vacancyModel.getOngVacancies(id);
+    const result = await vacancyModel.getOngVacancies(ongId);
 
-  res.send(result.rows);
+    res.send(result.rows);
+  } catch (err) {
+    next(err);
+  }
 }
 
 async function createVacancy(req, res) {

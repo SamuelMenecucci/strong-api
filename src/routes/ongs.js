@@ -6,6 +6,8 @@ import ongController from "../app/controller/ong.controller.js";
 import multer from "../middlewares/multer.js";
 const router = express.Router();
 
+router.get("/getOng", ongValidator.getUser, ongController.getOng);
+
 router.post("/login", sessionValidator.login, sessionController.login);
 
 router.post("/createOng", ongValidator.validOng, ongController.createOng);

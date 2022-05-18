@@ -14,11 +14,12 @@ export const router = express.Router();
 router.use("/ongs", ongs.router);
 
 router.get("/getVacancies", vacancyController.getVacancies);
+
 router.post("/newVacancy", vacancyController.createVacancy);
 
 router.get("/searchVacancy", vacancyController.searchVacancy);
 
-router.get("/ongVacancies/:id", vacancyController.getOngVacancies);
+router.get("/ongVacancies", vacancyController.getOngVacancies);
 
 router.put("/editVacancy", vacancyController.editVacancy);
 

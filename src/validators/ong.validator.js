@@ -10,9 +10,25 @@ function checkAllFields(fields) {
   }
 }
 
+async function getUser(req, res, next) {
+  try {
+    const { ongId } = req.session;
+
+    console.log(req.session);
+
+    const ong = await ongModels.findOne({ where: { id: ongId } });
+
+    req.ong = ong;
+
+    next();
+  } catch (err) {
+    next(err);
+  }
+}
+
 async function validOng(req, res, next) {
   try {
-    const fields = JSON.parse(req.body.ong) || req.body;
+    const fields = req.body.ong || req.body;
 
     checkAllFields(fields);
 
@@ -54,11 +70,11 @@ async function editOng(req, res, next) {
       },
     });
 
-    console.log(ong);
-
     if (fields.tel.replace(/\D/g, "").length < 11) {
       throw new Error("Telefone Inválido");
     }
+
+    req.ong = ong;
 
     next();
   } catch (err) {
@@ -69,4 +85,5 @@ async function editOng(req, res, next) {
 export default {
   validOng,
   editOng,
+  getUser,
 };
