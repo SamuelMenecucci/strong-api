@@ -2,7 +2,8 @@ import { db } from "../../config/db.config.js";
 
 function getVacancies() {
   return db.query(
-    "select *, vagas.descricao as descricaovaga, vagas.id as vagaId from vagas left join ong on ( vagas.ongId = ong.id)"
+    // "select *, vagas.descricao as descricaovaga, vagas.id as vagaId from vagas left join ong on ( vagas.ongId = ong.id)"
+    "select *, vagas.descricao as descricaovaga, vagas.id as vagaId from vagas"
   );
 }
 
