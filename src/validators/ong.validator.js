@@ -14,8 +14,6 @@ async function getUser(req, res, next) {
   try {
     const { ongId } = req.session;
 
-    console.log(req.session);
-
     const ong = await ongModels.findOne({ where: { id: ongId } });
 
     req.ong = ong;
