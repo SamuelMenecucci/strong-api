@@ -25,7 +25,7 @@ function newVacancy(data) {
 
 function searchVacancy(filter) {
   return db.query(
-    `select * from vagas where (titulo ilike '%${filter}%') or (tag ilike '%${filter}%') `
+    `select *, vagas.descricao as descricaovaga from vagas vagas left join ong on ( vagas.ongId = ong.id) where (titulo ilike '%${filter}%') or (tag ilike '%${filter}%') `
   );
 }
 
