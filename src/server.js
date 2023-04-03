@@ -5,6 +5,8 @@ import session from "./config/session.config.js";
 
 const app = express();
 
+const PORT = process.env.PORT || 5001;
+
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -19,4 +21,4 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(router);
 
-app.listen(5001, () => console.log("server is running on port 5001"));
+app.listen(PORT, () => console.log(`server is running on port ${PORT}`));
