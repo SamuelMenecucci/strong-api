@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5001;
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "https://strong-volunter.vercel.app"],
     methods: ["GET,HEAD,PUT,POST,DELETE"],
     credentials: true,
   })

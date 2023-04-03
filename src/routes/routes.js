@@ -13,6 +13,8 @@ export const router = express.Router();
 
 router.use("/ongs", ongs.router);
 
+router.get("/", (req, res) => res.send("Server is up"));
+
 router.get("/getVacancies", vacancyController.getVacancies);
 
 router.post("/newVacancy", vacancyController.createVacancy);
