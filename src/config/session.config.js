@@ -14,6 +14,8 @@ export default expressSession({
 
   saveUninitialized: false,
 
+  proxy: true,
+
   cookie: {
     httpOnly: false,
     secure: true,
